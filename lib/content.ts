@@ -56,18 +56,18 @@ export const sections: Record<SectionId, Section> = {
         stack: ["Deepgram", "Hugging Face Inference Providers", "ElevenLabs", "Next.js route handlers", "Upstash rate limiting"],
         status: "building",
       },
-      {
+            {
         slug: "vision",
         title: "Object detection in the browser",
         summary:
           "YOLO running on your webcam or on a photo you upload. Inference happens on your device, so no image is sent anywhere.",
         capabilities: [
-          "Detect objects on a live webcam feed or on an uploaded image.",
-          "Adjust the confidence and overlap thresholds and see boxes update.",
-          "Compare WebGPU and WebAssembly inference speed on your own hardware.",
+          "Detect the 80 COCO object classes on a live camera feed or on a photo.",
+          "Adjust the confidence and overlap thresholds and see the boxes update instantly.",
+          "Switch between WebGPU and WebAssembly to compare inference speed on your own hardware.",
         ],
-        stack: ["YOLO11n", "ONNX", "ONNX Runtime Web", "WebGPU"],
-        status: "building",
+        stack: ["YOLO11n (Ultralytics)", "ONNX", "ONNX Runtime Web", "WebGPU", "WebAssembly"],
+        status: "live",
       },
       {
         slug: "time-series",

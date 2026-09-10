@@ -2,15 +2,14 @@
 
 import { covarianceEllipse } from "@/lib/ml/clustering";
 import type { LabeledPoint } from "@/lib/ml/data";
+import { colorOf, PALETTE } from "@/lib/palette";
 import type { PlotData } from "./compute";
 
-// Okabe-Ito: a categorical palette that stays distinguishable with color vision deficiency.
-export const PALETTE = ["#0072B2", "#E69F00", "#009E73", "#CC79A7", "#56B4E9", "#D55E00", "#F0E442", "#7A5195"];
 const PAPER = [251, 252, 253];
 const INK = "#17203a";
 const NOISE = "#9aa3b2";
 
-export const colorOf = (i: number) => PALETTE[((i % PALETTE.length) + PALETTE.length) % PALETTE.length];
+export { colorOf };
 
 function rgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16);

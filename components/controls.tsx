@@ -5,7 +5,7 @@ import { useId } from "react";
 interface SegmentedProps<T extends string> {
   legend: string;
   value: T;
-  options: { value: T; label: string }[];
+  options: { value: T; label: string; disabled?: boolean }[];
   onChange: (v: T) => void;
 }
 
@@ -19,13 +19,14 @@ export function Segmented<T extends string>({ legend, value, options, onChange }
         {options.map((o) => (
           <label
             key={o.value}
-            className="cursor-pointer rounded-[2px] px-3.5 py-1.5 text-[15px] text-ink-muted has-checked:bg-ink has-checked:text-paper has-focus-visible:outline-2 has-focus-visible:outline-accent"
+            className="cursor-pointer rounded-[2px] px-3.5 py-1.5 text-[15px] text-ink-muted has-checked:bg-ink has-checked:text-paper has-disabled:cursor-not-allowed has-disabled:opacity-45 has-focus-visible:outline-2 has-focus-visible:outline-accent"
           >
             <input
               type="radio"
               name={name}
               value={o.value}
               checked={value === o.value}
+              disabled={o.disabled}
               onChange={() => onChange(o.value)}
               className="sr-only"
             />
@@ -121,19 +122,21 @@ export function Button({
   onClick,
   variant = "secondary",
   pressed,
+  disabled,
 }: {
   children: React.ReactNode;
   onClick: () => void;
   variant?: "primary" | "secondary";
   pressed?: boolean;
+  disabled?: boolean;
 }) {
-  const base = "rounded-[3px] px-3.5 py-1.5 text-[15px] transition-colors";
+  const base = "rounded-[3px] px-3.5 py-1.5 text-[15px] transition-colors disabled:cursor-not-allowed disabled:opacity-45";
   const styles =
     variant === "primary"
       ? "bg-ink text-paper hover:bg-accent-strong"
       : "border border-ink/25 text-ink hover:border-ink/60 aria-pressed:border-ink aria-pressed:bg-ink/[0.06]";
   return (
-    <button type="button" onClick={onClick} aria-pressed={pressed} className={`${base} ${styles}`}>
+    <button type="button" onClick={onClick} aria-pressed={pressed} disabled={disabled} className={`${base} ${styles}`}>
       {children}
     </button>
   );

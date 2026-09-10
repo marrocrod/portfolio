@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Design tokens. Palette is a cool "figure paper" base with accents
+   taken from the viridis colormap used in the plots. */
+@theme {
+  --color-paper: #f2f4f6;
+  --color-paper-raised: #fbfcfd;
+  --color-ink: #17203a;
+  --color-ink-muted: #56607a;
+  --color-rule: #cfd5de;
+  --color-accent: #2c6690;
+  --color-accent-strong: #1f4e70;
+  --color-signal: #fde725;
+
+  --font-serif: "STIX Two Text Variable", "STIX Two Text", Georgia, serif;
+  --font-sans: "Instrument Sans Variable", "Instrument Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #b8dcd4;
+    color: var(--color-ink);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Inline text links: underlined, accent colored. */
+  .text-link {
+    color: var(--color-accent);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+  .text-link:hover {
+    color: var(--color-accent-strong);
+    text-decoration-color: currentColor;
+  }
+}

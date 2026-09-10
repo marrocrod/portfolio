@@ -82,18 +82,18 @@ export const sections: Record<SectionId, Section> = {
         stack: ["REE open data API", "statsmodels", "PyTorch", "GitHub Actions", "Plotly"],
         status: "building",
       },
-      {
+            {
         slug: "clustering",
         title: "Clustering and classification playground",
         summary:
           "Draw points on a canvas, pick an algorithm and watch clusters and decision boundaries change as you edit the data.",
         capabilities: [
-          "Place and remove points by hand or load a preset dataset.",
-          "Run k-means, DBSCAN, Gaussian mixtures, SVMs and a small neural network.",
-          "Tune each algorithm's parameters and see the result immediately.",
+          "Place and remove points by hand or load one of four standard toy datasets.",
+          "Find groups with k-means, DBSCAN or a Gaussian mixture, and see centres, noise and covariance ellipses.",
+          "Separate labelled classes with k-nearest neighbours, an RBF support vector machine or a neural network that trains live.",
         ],
-        stack: ["TypeScript", "Canvas", "Web Workers"],
-        status: "building",
+        stack: ["TypeScript", "Canvas", "Algorithms written from scratch, no ML libraries"],
+        status: "live",
       },
     ],
   },

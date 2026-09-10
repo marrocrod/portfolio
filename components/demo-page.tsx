@@ -50,7 +50,9 @@ export default function DemoPage({ section, slug, children }: Props) {
 
       <div className="mt-16 grid gap-x-12 gap-y-10 md:grid-cols-12">
         <section className="md:col-span-7">
-          <h2 className="font-serif text-[24px] font-medium">What you will be able to do</h2>
+          <h2 className="font-serif text-[24px] font-medium">
+            {demo.status === "live" ? "What you can do" : "What you will be able to do"}
+          </h2>
           <ul className="mt-4 space-y-3 font-serif text-[17px] leading-[1.6] text-ink-muted">
             {demo.capabilities.map((c) => (
               <li key={c} className="relative pl-5 before:absolute before:left-0 before:top-[0.72em] before:h-[5px] before:w-[5px] before:rounded-full before:bg-accent">

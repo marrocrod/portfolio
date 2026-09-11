@@ -43,18 +43,18 @@ export const sections: Record<SectionId, Section> = {
     intro:
       "Speech, vision, forecasting and classic unsupervised learning. Models run in your browser where possible; anything heavier goes through a rate-limited server route.",
     demos: [
-      {
+       {
         slug: "voice-chat",
         title: "Voice assistant",
         summary:
           "Ask questions about my work out loud and hear the answer. Speech is transcribed by Deepgram, answered by an open model on Hugging Face and spoken back by ElevenLabs.",
         capabilities: [
-          "Hold a spoken conversation from the microphone, with live transcription on screen.",
-          "Ask about my projects, research and experience and get grounded answers.",
-          "Switch between voice and text input at any point.",
+          "Talk from your microphone and watch the live transcription as you speak.",
+          "Ask about my projects, research and experience in English or Spanish.",
+          "Type instead of talking, and turn spoken replies off whenever you like.",
         ],
-        stack: ["Deepgram", "Hugging Face Inference Providers", "ElevenLabs", "Next.js route handlers", "Upstash rate limiting"],
-        status: "building",
+        stack: ["Deepgram Nova-3", "Llama 3.3 70B via Hugging Face Inference Providers", "ElevenLabs Flash v2.5", "Next.js route handlers", "Upstash rate limiting"],
+        status: "live",
       },
             {
         slug: "vision",
@@ -69,18 +69,18 @@ export const sections: Record<SectionId, Section> = {
         stack: ["YOLO11n (Ultralytics)", "ONNX", "ONNX Runtime Web", "WebGPU", "WebAssembly"],
         status: "live",
       },
-      {
+            {
         slug: "time-series",
         title: "Spanish electricity forecasting",
         summary:
-          "Day-ahead forecasts of electricity demand and price in Spain, built from Red Eléctrica data and refreshed daily.",
+          "Forecasts of electricity demand and day-ahead prices in Spain for the next 48 hours, built from Red Eléctrica data and refreshed every morning.",
         capabilities: [
-          "Browse historical demand and price with zoom and range selection.",
-          "Compare classical and neural forecasts against what actually happened.",
-          "Change the forecast horizon and inspect prediction intervals.",
+          "Compare a seasonal baseline, gradient boosting and a neural network, plus Red Eléctrica's own demand forecast.",
+          "See each forecast with an 80% prediction interval taken from its recent errors.",
+          "Look back at the last two weeks of forecasts against what actually happened, with accuracy scores for every model.",
         ],
-        stack: ["REE open data API", "statsmodels", "PyTorch", "GitHub Actions", "Plotly"],
-        status: "building",
+        stack: ["REE REData API", "pandas", "scikit-learn", "GitHub Actions", "Plotly"],
+        status: "live",
       },
             {
         slug: "clustering",

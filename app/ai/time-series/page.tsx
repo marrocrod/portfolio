@@ -1,8 +1,12 @@
 import DemoPage, { demoMetadata } from "@/components/demo-page";
+import ElectricityForecast from "@/components/time-series/electricity-forecast";
 
 export const metadata = demoMetadata("ai", "time-series");
 
 export default function TimeSeriesPage() {
-  // Replace the placeholder by passing the interactive demo as children.
-  return <DemoPage section="ai" slug="time-series" />;
+  return (
+    <DemoPage section="ai" slug="time-series">
+      <ElectricityForecast />
+    </DemoPage>
+  );
 }

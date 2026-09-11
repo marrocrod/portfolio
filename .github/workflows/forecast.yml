@@ -1,0 +1,46 @@
+# Refreshes public/data/electricity.json every morning. The commit triggers a
+# Vercel deployment, which publishes the new forecast.
+name: Electricity forecast
+
+on:
+  schedule:
+    - cron: "15 7 * * *" # 07:15 UTC: 08:15 or 09:15 in Madrid, before day-ahead prices are published
+  workflow_dispatch: # allows running it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: electricity-forecast
+  cancel-in-progress: false
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: python/time_series/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r python/time_series/requirements.txt
+
+      - name: Download data, backtest and forecast
+        run: python python/time_series/forecast.py
+
+      - name: Commit the updated forecast
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/electricity.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Update electricity forecast"
+          git push

@@ -121,3 +121,33 @@ export function expectZ(s: State, qubit: number): number {
   for (let z = 0; z < s.re.length; z++) e += (z & bit ? -1 : 1) * (s.re[z] ** 2 + s.im[z] ** 2);
   return e;
 }
+
+/** Controlled-Z: flips the sign of amplitudes where both qubits are 1. */
+export function applyCz(s: State, a: number, b: number) {
+  const mask = (1 << a) | (1 << b);
+  for (let z = 0; z < s.re.length; z++) {
+    if ((z & mask) === mask) {
+      s.re[z] = -s.re[z];
+      s.im[z] = -s.im[z];
+    }
+  }
+}
+
+/** Bloch vector (<X>, <Y>, <Z>) of one qubit. */
+export function blochVector(s: State, qubit: number): [number, number, number] {
+  const bit = 1 << qubit;
+  let x = 0;
+  let y = 0;
+  let z = 0;
+  for (let a = 0; a < s.re.length; a++) {
+    if (a & bit) continue;
+    const b = a | bit;
+    // conj(amp_a) * amp_b
+    const cr = s.re[a] * s.re[b] + s.im[a] * s.im[b];
+    const ci = s.re[a] * s.im[b] - s.im[a] * s.re[b];
+    x += 2 * cr;
+    y += 2 * ci;
+    z += s.re[a] ** 2 + s.im[a] ** 2 - s.re[b] ** 2 - s.im[b] ** 2;
+  }
+  return [x, y, z];
+}

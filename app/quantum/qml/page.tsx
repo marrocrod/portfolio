@@ -1,8 +1,12 @@
 import DemoPage, { demoMetadata } from "@/components/demo-page";
+import QmlDemo from "@/components/quantum/qml/qml-demo";
 
 export const metadata = demoMetadata("quantum", "qml");
 
 export default function QmlPage() {
-  // Replace the placeholder by passing the interactive demo as children.
-  return <DemoPage section="quantum" slug="qml" />;
+  return (
+    <DemoPage section="quantum" slug="qml">
+      <QmlDemo />
+    </DemoPage>
+  );
 }

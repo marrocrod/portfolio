@@ -133,14 +133,14 @@ export const sections: Record<SectionId, Section> = {
         slug: "qml",
         title: "Quantum classifier",
         summary:
-          "A data re-uploading classifier trained on the same 2D datasets as the classical playground, so the two can be compared directly.",
+          "A data re-uploading circuit learning to separate points in your browser, next to a classical network with the same number of parameters on the same data.",
         capabilities: [
-          "Train a small quantum classifier in your browser and watch the boundary form.",
-          "Change the number of layers and qubits and see the effect on accuracy.",
-          "Put its decision boundary next to a classical model on the same data.",
+          "Train a quantum classifier on moons, circles, blobs or spirals and watch its decision boundary form.",
+          "Change the number of qubits and data re-uploads and see what the circuit can express.",
+          "Compare it against a size-matched neural network, scored on points neither model trained on.",
         ],
-        stack: ["TypeScript state-vector simulator", "Parameter-shift gradients"],
-        status: "building",
+        stack: ["Data re-uploading (Pérez-Salinas et al., 2020)", "TypeScript state-vector simulator", "Parameter-shift gradients", "Adam optimizer"],
+        status: "live",
       },
       {
         slug: "qubo",

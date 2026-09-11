@@ -1,8 +1,12 @@
 import DemoPage, { demoMetadata } from "@/components/demo-page";
+import QaoaDemo from "@/components/quantum/qaoa/qaoa-demo";
 
 export const metadata = demoMetadata("quantum", "qaoa");
 
 export default function QaoaPage() {
-  // Replace the placeholder by passing the interactive demo as children.
-  return <DemoPage section="quantum" slug="qaoa" />;
+  return (
+    <DemoPage section="quantum" slug="qaoa">
+      <QaoaDemo />
+    </DemoPage>
+  );
 }
